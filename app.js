@@ -37,6 +37,6 @@ app.get('*', (req, res) => res.sendFile(path.resolve('web/index.html')));
 
 
 
-app.listen(6900, () => {
-    console.log(`Server started on 6900`);
+app.listen(6200, () => {
+    console.log(`Server started on 6200`);
 });
