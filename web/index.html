@@ -25,31 +25,130 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Actu221">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-  <meta flt-viewport="" name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta id="flutterweb-theme" name="theme-color" content="#000000">
-  <meta name="author" content="Issa Kane ">
-  <meta property="og:description"
-    content="Le maire de la commune de Rufisque nous a quittés. Alioune Mar est décédé ce vendredi à l'âge de 68 ans. L'heure de l'enterrement sera communiquée ultérieurement"
-    data-rh="true">
-  <meta property="og:image"
-    content="https://api-actu.deally.fr//actu221-file/alioune-mar-projet-de-mise-en-place-unite-de-transformation_developpement-durable-31.jpeg"
-    data-rh="true">
-  <meta name="keywords" content="keyWorodkeyword2">
-  <meta property="og:title" content="Décès de Alioune Mar : Rufisque Ouest en Deuil" data-rh="true">
-
+ 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>actu</title>
   <link rel="manifest" href="manifest.json">
+<Script>
+  async function parseURL(url)  {
+    // Créer un objet URL à partir de l'URL fournie
+    let urlObj = new URL(url);
+    
+    // Extraire les différentes parties de l'URL
+    let protocol = urlObj.protocol; // "https:"
+    let hostname = urlObj.hostname; // "test-actu.deally.fr"
+    let pathname = urlObj.pathname; // "/article/alioune-tine-demande-aux-autorits-dassurer-la-scurit-dahmeth-suzanne-camara"
+    let searchParams = urlObj.search; // Partie après "?" s'il y en a une (e.g. "?id=123")
+    
+    // Optionnel: Découper le pathname en segments
+    let pathSegments = pathname.split('/').filter(segment => segment.length > 0);
+    
+    // Afficher les résultats
+    console.log("Protocol:", protocol);
+    console.log("Hostname:", hostname);
+    console.log("Pathname:", pathname.split('/article')[1]);
+
+    addMetaTagsFromArticle(pathname.split('/article')[1])
+
+
+
+}
+
+function addMetaTags(articleData) {
+    // Ajouter le titre
+    const titleElement = document.createElement('title');
+    titleElement.textContent = articleData.titre || 'Titre par défaut';
+    document.head.appendChild(titleElement);
+
+    // Ajouter la meta description
+    const descriptionMeta = document.createElement('meta');
+    descriptionMeta.name = "description";
+    descriptionMeta.content = articleData.description || 'Description par défaut';
+    document.head.appendChild(descriptionMeta);
+
+    // Ajouter les meta keywords
+    const keywordsMeta = document.createElement('meta');
+    keywordsMeta.name = "keywords";
+    keywordsMeta.content = 'Mots-clés par défaut';
+    document.head.appendChild(keywordsMeta);
+
+    // Ajouter la meta auteur
+    const authorMeta = document.createElement('meta');
+    authorMeta.name = "author";
+    authorMeta.content = `${articleData.author.prenom} ${articleData.author.nom}` || 'Auteur par défaut';
+    document.head.appendChild(authorMeta);
+
+    // Ajouter les balises Open Graph pour les réseaux sociaux
+    const ogTitleMeta = document.createElement('meta');
+    ogTitleMeta.setAttribute('property', 'og:title');
+    ogTitleMeta.content = articleData.titre || 'Titre par défaut';
+    document.head.appendChild(ogTitleMeta);
+
+    const ogDescriptionMeta = document.createElement('meta');
+    ogDescriptionMeta.setAttribute('property', 'og:description');
+    ogDescriptionMeta.content = articleData.description || 'Description par défaut';
+    document.head.appendChild(ogDescriptionMeta);
+
+    const ogImageMeta = document.createElement('meta');
+    ogImageMeta.setAttribute('property', 'og:image');
+    ogImageMeta.content = `https://api-actu.deally.fr${articleData.image.url}` || 'URL de l\'image par défaut';
+    document.head.appendChild(ogImageMeta);
+
+    const ogUrlMeta = document.createElement('meta');
+    ogUrlMeta.setAttribute('property', 'og:url');
+    ogUrlMeta.content = `https://test-actu.deally.fr/article/${articleData.slug}` || 'URL par défaut';
+    document.head.appendChild(ogUrlMeta);
+
+    const ogTypeMeta = document.createElement('meta');
+    ogTypeMeta.setAttribute('property', 'og:type');
+    ogTypeMeta.content = 'article';
+    document.head.appendChild(ogTypeMeta);
+}
+
+
+async function addMetaTagsFromArticle(url) {
+    try {
+        // Fetcher les données de l'article depuis l'API
+        let response = await fetch("https://api-actu.deally.fr/api/v1/articles/article/"+url);
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        
+        // Supposons que l'API retourne un JSON avec les métadonnées nécessaires
+        let articleData = await response.json();
+
+        console.log("articleData");
+        console.log(articleData);
+        
+        addMetaTags(articleData);
+       
+        
+        console.log('Les métadonnées ont été ajoutées avec succès.');
+    } catch (error) {
+        console.error('Erreur lors de l\'ajout des métadonnées:', error);
+    }
+}
+
+</Script>
+  <script>
+    // Code JavaScript pour récupérer l'URL actuelle de la page
+    window.addEventListener('load', function() {
+      let currentURL = window.location.href;
+      console.log("L'URL actuelle de la page est :", currentURL);
+      parseURL(currentURL)
+    });
+  </script>
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "1601855637";
+    const serviceWorkerVersion = "161449430";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+
+
 
 </head>
 
