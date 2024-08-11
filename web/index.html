@@ -31,7 +31,7 @@
 
   <title>actu</title>
   <link rel="manifest" href="manifest.json">
-<Script>
+<Script defer>
   async function parseURL(url)  {
     // Créer un objet URL à partir de l'URL fournie
     let urlObj = new URL(url);
@@ -50,61 +50,82 @@
     console.log("Hostname:", hostname);
     console.log("Pathname:", pathname.split('/article')[1]);
 
-    addMetaTagsFromArticle(pathname.split('/article')[1])
+   await addMetaTagsFromArticle(pathname.split('/article')[1])
 
 
 
 }
 
 function addMetaTags(articleData) {
-    // Ajouter le titre
-    const titleElement = document.createElement('title');
-    titleElement.textContent = articleData.titre || 'Titre par défaut';
+   // Ajouter le titre
+   const titleElement = document.createElement('title');
+    titleElement.textContent = articleData.data.titre || 'Titre par défaut';
     document.head.appendChild(titleElement);
 
     // Ajouter la meta description
     const descriptionMeta = document.createElement('meta');
     descriptionMeta.name = "description";
-    descriptionMeta.content = articleData.description || 'Description par défaut';
+    descriptionMeta.content = getSecondParagraphFromHtml(articleData.data.description) || 'Description par défaut';
     document.head.appendChild(descriptionMeta);
 
     // Ajouter les meta keywords
     const keywordsMeta = document.createElement('meta');
     keywordsMeta.name = "keywords";
-    keywordsMeta.content = 'Mots-clés par défaut';
+    keywordsMeta.content = articleData.data.keyWorod.join(', ') || 'Mots-clés par défaut';
     document.head.appendChild(keywordsMeta);
 
     // Ajouter la meta auteur
     const authorMeta = document.createElement('meta');
     authorMeta.name = "author";
-    authorMeta.content = `${articleData.author.prenom} ${articleData.author.nom}` || 'Auteur par défaut';
+    authorMeta.content = `${articleData.data.author.prenom} ${articleData.data.author.nom}` || 'Auteur par défaut';
     document.head.appendChild(authorMeta);
 
     // Ajouter les balises Open Graph pour les réseaux sociaux
     const ogTitleMeta = document.createElement('meta');
     ogTitleMeta.setAttribute('property', 'og:title');
-    ogTitleMeta.content = articleData.titre || 'Titre par défaut';
+    ogTitleMeta.content = articleData.data.titre || 'Titre par défaut';
     document.head.appendChild(ogTitleMeta);
 
     const ogDescriptionMeta = document.createElement('meta');
     ogDescriptionMeta.setAttribute('property', 'og:description');
-    ogDescriptionMeta.content = articleData.description || 'Description par défaut';
+    ogDescriptionMeta.content = articleData.data.description || 'Description par défaut';
     document.head.appendChild(ogDescriptionMeta);
 
     const ogImageMeta = document.createElement('meta');
     ogImageMeta.setAttribute('property', 'og:image');
-    ogImageMeta.content = `https://api-actu.deally.fr${articleData.image.url}` || 'URL de l\'image par défaut';
+    ogImageMeta.content = `https://test-actu.deally.fr${articleData.data.image.url}` || 'URL de l\'image par défaut';
     document.head.appendChild(ogImageMeta);
 
     const ogUrlMeta = document.createElement('meta');
     ogUrlMeta.setAttribute('property', 'og:url');
-    ogUrlMeta.content = `https://test-actu.deally.fr/article/${articleData.slug}` || 'URL par défaut';
+    ogUrlMeta.content = `https://test-actu.deally.fr/article/${articleData.data.slug}` || 'URL par défaut';
     document.head.appendChild(ogUrlMeta);
 
     const ogTypeMeta = document.createElement('meta');
     ogTypeMeta.setAttribute('property', 'og:type');
     ogTypeMeta.content = 'article';
     document.head.appendChild(ogTypeMeta);
+
+}
+
+function getSecondParagraphFromHtml(htmlString) {
+    // Créer un élément DOM temporaire
+    const tempDiv = document.createElement('div');
+    
+    // Assigner le HTML à l'élément
+    tempDiv.innerHTML = htmlString;
+    
+    // Sélectionner tous les éléments <p> dans le HTML
+    const paragraphs = tempDiv.querySelectorAll('p');
+    
+    // Vérifier s'il y a au moins deux paragraphes
+    if (paragraphs.length >= 2) {
+        // Récupérer le texte du deuxième paragraphe
+        return paragraphs[1].textContent;
+    } else {
+        // Si moins de deux paragraphes, retourner un message d'erreur ou une valeur par défaut
+        return "Le deuxième paragraphe n'existe pas.";
+    }
 }
 
 
@@ -121,11 +142,13 @@ async function addMetaTagsFromArticle(url) {
 
         console.log("articleData");
         console.log(articleData);
-        
-        addMetaTags(articleData);
+        if(articleData != null) {
+          addMetaTags(articleData);
+        console.log('Les métadonnées ont été ajoutées avec succès.');
+
+        }
        
         
-        console.log('Les métadonnées ont été ajoutées avec succès.');
     } catch (error) {
         console.error('Erreur lors de l\'ajout des métadonnées:', error);
     }
@@ -143,7 +166,7 @@ async function addMetaTagsFromArticle(url) {
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "161449430";
+    const serviceWorkerVersion = "1445268175";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
