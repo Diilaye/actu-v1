@@ -96,6 +96,182 @@ app.get('/article/:slug', async (req, res) => {
     }
 });
 
+app.get('/categorie/:slug', async (req, res) => {
+    try {
+
+        // const urlPath = req.path;
+        // const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+        // // Afficher le chemin de l'URL et l'URL complète
+        // console.log('Chemin de l\'URL:', urlPath);
+        // console.log('URL Complète:', fullUrl);
+
+        // // Récupération de l'objet article depuis l'API
+        // const response = await axios.get(baseApiUrl+req.path);
+        // const article = response.data.data;
+
+        // // Lecture du fichier index.html
+        // const filePath = path.join(__dirname, 'web', 'index.html');
+        // let html = fs.readFileSync(filePath, 'utf-8');
+
+        // // Insertion directe des variables dans l'HTML
+
+        // html = html.replace(/{{title}}/g, article.titre || '');
+        // html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
+        // html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
+        // html = html.replace(/{{imageAlt}}/g,  article.titre || '');
+        // html = html.replace(/{{content}}/g,   "image");
+
+        // Envoi de l'HTML modifié au client
+        res.send(html);
+
+    } catch (error) {
+        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+
+app.get('/login', async (req, res) => {
+    try {
+
+        // const urlPath = req.path;
+        // const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+        // // Afficher le chemin de l'URL et l'URL complète
+        // console.log('Chemin de l\'URL:', urlPath);
+        // console.log('URL Complète:', fullUrl);
+
+        // // Récupération de l'objet article depuis l'API
+        // const response = await axios.get(baseApiUrl+req.path);
+        // const article = response.data.data;
+
+        // // Lecture du fichier index.html
+        // const filePath = path.join(__dirname, 'web', 'index.html');
+        // let html = fs.readFileSync(filePath, 'utf-8');
+
+        // // Insertion directe des variables dans l'HTML
+
+        // html = html.replace(/{{title}}/g, article.titre || '');
+        // html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
+        // html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
+        // html = html.replace(/{{imageAlt}}/g,  article.titre || '');
+        // html = html.replace(/{{content}}/g,   "image");
+
+        // Envoi de l'HTML modifié au client
+        res.send(html);
+
+    } catch (error) {
+        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+app.get('/administratif', async (req, res) => {
+    try {
+
+        // const urlPath = req.path;
+        // const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+        // // Afficher le chemin de l'URL et l'URL complète
+        // console.log('Chemin de l\'URL:', urlPath);
+        // console.log('URL Complète:', fullUrl);
+
+        // // Récupération de l'objet article depuis l'API
+        // const response = await axios.get(baseApiUrl+req.path);
+        // const article = response.data.data;
+
+        // // Lecture du fichier index.html
+        // const filePath = path.join(__dirname, 'web', 'index.html');
+        // let html = fs.readFileSync(filePath, 'utf-8');
+
+        // // Insertion directe des variables dans l'HTML
+
+        // html = html.replace(/{{title}}/g, article.titre || '');
+        // html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
+        // html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
+        // html = html.replace(/{{imageAlt}}/g,  article.titre || '');
+        // html = html.replace(/{{content}}/g,   "image");
+
+        // Envoi de l'HTML modifié au client
+        res.send(html);
+
+    } catch (error) {
+        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+app.get('/redacteur', async (req, res) => {
+    try {
+
+        // const urlPath = req.path;
+        // const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+        // // Afficher le chemin de l'URL et l'URL complète
+        // console.log('Chemin de l\'URL:', urlPath);
+        // console.log('URL Complète:', fullUrl);
+
+        // // Récupération de l'objet article depuis l'API
+        // const response = await axios.get(baseApiUrl+req.path);
+        // const article = response.data.data;
+
+        // // Lecture du fichier index.html
+        // const filePath = path.join(__dirname, 'web', 'index.html');
+        // let html = fs.readFileSync(filePath, 'utf-8');
+
+        // // Insertion directe des variables dans l'HTML
+
+        // html = html.replace(/{{title}}/g, article.titre || '');
+        // html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
+        // html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
+        // html = html.replace(/{{imageAlt}}/g,  article.titre || '');
+        // html = html.replace(/{{content}}/g,   "image");
+
+        // Envoi de l'HTML modifié au client
+        res.send(html);
+
+    } catch (error) {
+        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+app.get('/journaliste', async (req, res) => {
+    try {
+
+        // const urlPath = req.path;
+        // const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+        // // Afficher le chemin de l'URL et l'URL complète
+        // console.log('Chemin de l\'URL:', urlPath);
+        // console.log('URL Complète:', fullUrl);
+
+        // // Récupération de l'objet article depuis l'API
+        // const response = await axios.get(baseApiUrl+req.path);
+        // const article = response.data.data;
+
+        // // Lecture du fichier index.html
+        // const filePath = path.join(__dirname, 'web', 'index.html');
+        // let html = fs.readFileSync(filePath, 'utf-8');
+
+        // // Insertion directe des variables dans l'HTML
+
+        // html = html.replace(/{{title}}/g, article.titre || '');
+        // html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
+        // html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
+        // html = html.replace(/{{imageAlt}}/g,  article.titre || '');
+        // html = html.replace(/{{content}}/g,   "image");
+
+        // Envoi de l'HTML modifié au client
+        res.send(html);
+
+    } catch (error) {
+        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
 // Démarrage du serveur
 const PORT = process.env.PORT || 7200;
 app.listen(PORT, () => {
