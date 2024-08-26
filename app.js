@@ -50,7 +50,7 @@ app.get('/', async (req, res) => {
         html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
         html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
         html = html.replace(/{{imageAlt}}/g,  article.titre || '');
-        html = html.replace(/{{content}}/g,   "image");
+        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/article/alioune-tine-demande-aux-autorits-dassurer-la-scurit-dahmeth-suzanne-camara");
 
         // Envoi de l'HTML modifié au client
         res.send(html);
