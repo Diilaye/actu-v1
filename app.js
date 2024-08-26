@@ -25,6 +25,7 @@ const apiUrl = 'https://api-actu.deally.fr/api/v1/articles/article/alioune-tine-
 const baseApiUrl = 'https://api-actu.deally.fr/api/v1/articles';
 
 
+
 app.get('/', async (req, res) => {
     try {
 
@@ -69,7 +70,7 @@ app.get('/article/:slug', async (req, res) => {
 
         // Afficher le chemin de l'URL et l'URL complète
         console.log('Chemin de l\'URL:', urlPath);
-        console.log('URL Complète:', fullUrl);
+        console.log('URL Complète:', baseApiUrl+urlPath);
 
         // Récupération de l'objet article depuis l'API
         const response = await axios.get(baseApiUrl+req.path);
@@ -85,7 +86,6 @@ app.get('/article/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
         html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
         html = html.replace(/{{imageAlt}}/g,  article.titre || '');
-        html = html.replace(/{{content}}/g,   "image");
 
         // Envoi de l'HTML modifié au client
         res.send(html);
