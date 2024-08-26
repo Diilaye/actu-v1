@@ -56,8 +56,7 @@ app.get('/', async (req, res) => {
         res.send(html);
 
     } catch (error) {
-        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
-        res.status(500).send('Erreur serveur');
+        res.send(html);
     }
 });
 
@@ -163,8 +162,7 @@ app.get('/login', async (req, res) => {
         res.send(html);
 
     } catch (error) {
-        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
-        res.status(500).send('Erreur serveur');
+        res.send(html);
     }
 });
 
@@ -198,8 +196,8 @@ app.get('/administratif', async (req, res) => {
         res.send(html);
 
     } catch (error) {
-        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
-        res.status(500).send('Erreur serveur');
+        res.send(html);
+
     }
 });
 
@@ -233,8 +231,8 @@ app.get('/redacteur', async (req, res) => {
         res.send(html);
 
     } catch (error) {
-        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
-        res.status(500).send('Erreur serveur');
+        res.send(html);
+
     }
 });
 
@@ -268,8 +266,8 @@ app.get('/journaliste', async (req, res) => {
         res.send(html);
 
     } catch (error) {
-        console.error('Erreur lors de la récupération de l\'article ou du rendu du fichier :', error);
-        res.status(500).send('Erreur serveur');
+        res.send(html);
+
     }
 });
 
