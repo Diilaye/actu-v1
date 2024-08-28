@@ -24,6 +24,7 @@ const apiUrl = 'https://api-actu.deally.fr/api/v1/articles/article/alioune-tine-
 
 const baseApiUrl = 'https://api-actu.deally.fr/api/v1/articles';
 
+app.use('/web', require('express').static('web'));
 
 
 app.get('/', async (req, res) => {
@@ -32,6 +33,7 @@ app.get('/', async (req, res) => {
 
         // Lecture du fichier index.html
         const filePath = path.join(__dirname, 'web', 'index.html');
+        
         let html = fs.readFileSync(filePath, 'utf-8');
 
         // Insertion directe des variables dans l'HTML
@@ -41,7 +43,7 @@ app.get('/', async (req, res) => {
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
         html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/");
-
+        
         // Envoi de l'HTML modifié au client
         res.send(html);
 
