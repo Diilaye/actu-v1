@@ -24,7 +24,7 @@ const apiUrl = 'https://api-actu.deally.fr/api/v1/articles/article/alioune-tine-
 
 const baseApiUrl = 'https://api-actu.deally.fr/api/v1/articles';
 
-app.use('/web', require('express').static('web'));
+app.use(express.static(path.join(__dirname, "web")));
 
 
 app.get('/', async (req, res) => {
