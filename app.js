@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, "web")));
 
 
 app.get('/', async (req, res) => {
+
     try {
 
 
@@ -70,7 +71,6 @@ app.get('/article/:slug', async (req, res) => {
     try {
 
         const urlPath = req.path;
-        const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 
         // Afficher le chemin de l'URL et l'URL complète
         console.log('Chemin de l\'URL:', urlPath);
@@ -90,7 +90,7 @@ app.get('/article/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
         html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
         html = html.replace(/{{imageAlt}}/g,  article.titre || '');
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/article/alioune-tine-demande-aux-autorits-dassurer-la-scurit-dahmeth-suzanne-camara");
+        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr"+req.path);
 
         // Envoi de l'HTML modifié au client
         res.send(html);
@@ -127,8 +127,6 @@ app.get('/categorie/:slug', async (req, res) => {
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
         html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/"+req.params.slug);
-
-        
         res.send(html);
 
     } catch (error) {
