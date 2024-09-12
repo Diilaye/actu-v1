@@ -147,6 +147,40 @@ app.get('/categorie/:slug', async (req, res) => {
     }
 });
 
+app.get('/tag/:slug', async (req, res) => {
+    try {
+
+        // Lecture du fichier index.html
+        const filePath = path.join(__dirname, 'web', 'index.html');
+        let html = fs.readFileSync(filePath, 'utf-8');
+
+        // Insertion directe des variables dans l'HTML
+
+        html = html.replace(/{{title}}/g, "Actu221 | "+req.params.slug);
+        html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
+        html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
+        html = html.replace(/{{imageAlt}}/g,  "Actu221");
+        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/"+req.params.slug);
+        res.send(html);
+
+    } catch (error) {
+        // Lecture du fichier index.html
+        const filePath = path.join(__dirname, 'web', 'index.html');
+        let html = fs.readFileSync(filePath, 'utf-8');
+
+        // Insertion directe des variables dans l'HTML
+
+        html = html.replace(/{{title}}/g, "Actu221 | "+req.params.slug);
+        html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
+        html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
+        html = html.replace(/{{imageAlt}}/g,  "Actu221");
+        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/"+req.params.slug);
+
+        
+        res.send(html);
+    }
+});
+
 
 app.get('/login', async (req, res) => {
     try {
