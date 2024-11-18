@@ -88,7 +88,7 @@ app.get('/article/:slug', async (req, res) => {
 
         html = html.replace(/{{title}}/g, article.titre || '');
         html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
-        html = html.replace(/{{imageUrl}}/g, "https://api-actu.yaatalmbinde.sn/"+ article.image.url || '');
+        html = html.replace(/{{imageUrl}}/g, "https://api-actu.yaatalmbinde.sn"+ article.image.url || '');
         html = html.replace(/{{imageAlt}}/g,  article.titre || '');
         html = html.replace(/{{url}}/g,   "https://a221.net"+req.path);
 
