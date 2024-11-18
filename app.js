@@ -20,9 +20,9 @@ function getSecondParagraph(html) {
 }
 
 // URL de l'API pour récupérer l'article
-const apiUrl = 'https://api-actu.deally.fr/api/v1/articles/article/alioune-tine-demande-aux-autorits-dassurer-la-scurit-dahmeth-suzanne-camara';
+const apiUrl = 'https://api-actu.yaatalmbinde.sn/api/v1/articles/article/alioune-tine-demande-aux-autorits-dassurer-la-scurit-dahmeth-suzanne-camara';
 
-const baseApiUrl = 'https://api-actu.deally.fr/api/v1/articles';
+const baseApiUrl = 'https://api-actu.yaatalmbinde.sn/api/v1/articles';
 
 app.use(express.static(path.join(__dirname, "web")));
 
@@ -43,7 +43,7 @@ app.get('/', async (req, res) => {
         html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/");
+        html = html.replace(/{{url}}/g,   "https://a221.net/");
         
         // Envoi de l'HTML modifié au client
         res.send(html);
@@ -59,7 +59,7 @@ app.get('/', async (req, res) => {
          html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
          html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
          html = html.replace(/{{imageAlt}}/g,  "Actu221");
-         html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/");
+         html = html.replace(/{{url}}/g,   "https://a221.net/");
  
          // Envoi de l'HTML modifié au client
          res.send(html);
@@ -88,9 +88,9 @@ app.get('/article/:slug', async (req, res) => {
 
         html = html.replace(/{{title}}/g, article.titre || '');
         html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
-        html = html.replace(/{{imageUrl}}/g, "https://api-actu.deally.fr"+ article.image.url || '');
+        html = html.replace(/{{imageUrl}}/g, "https://api-actu.yaatalmbinde.sn/"+ article.image.url || '');
         html = html.replace(/{{imageAlt}}/g,  article.titre || '');
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr"+req.path);
+        html = html.replace(/{{url}}/g,   "https://a221.net"+req.path);
 
         // Envoi de l'HTML modifié au client
         res.send(html);
@@ -106,7 +106,7 @@ app.get('/article/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/");
+        html = html.replace(/{{url}}/g,   "https://a221.net/");
 
         // Envoi de l'HTML modifié au client
         res.send(html);
@@ -126,7 +126,7 @@ app.get('/categorie/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/"+req.params.slug);
+        html = html.replace(/{{url}}/g,   "https://a221.net/"+req.params.slug);
         res.send(html);
 
     } catch (error) {
@@ -140,7 +140,7 @@ app.get('/categorie/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/"+req.params.slug);
+        html = html.replace(/{{url}}/g,   "https://a221.net/"+req.params.slug);
 
         
         res.send(html);
@@ -160,7 +160,7 @@ app.get('/tag/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/"+req.params.slug);
+        html = html.replace(/{{url}}/g,   "https://a221.net/"+req.params.slug);
         res.send(html);
 
     } catch (error) {
@@ -174,7 +174,7 @@ app.get('/tag/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
         html = html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
         html = html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = html.replace(/{{url}}/g,   "https://test-actu.deally.fr/"+req.params.slug);
+        html = html.replace(/{{url}}/g,   "https://a221.net/"+req.params.slug);
 
         
         res.send(html);

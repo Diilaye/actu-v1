@@ -1,6 +1,6 @@
 {
-    "name": "actu",
-    "short_name": "actu",
+    "name": "form",
+    "short_name": "form",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
