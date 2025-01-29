@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
         const replacements = {
             "{{title}}": "Actu221 | L’essentiel de l'information",
             "{{description}}": "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux...",
-            "{{imageUrl}}": "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107...",
+            "{{imageUrl}}": "https://api-actu.yaatalmbinde.sn/actu221-file/a221-logo.jpg",
             "{{imageAlt}}": "Actu221",
             "{{url}}": "https://a221.net/"
         };
