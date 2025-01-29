@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
 
         // Définition des variables dynamiques
         const replacements = {
-            "{{title}}": "A221, 1er média digital du SÉNÉGAL",
+            "{{title}}": "Actu221 , 1er média digital du SÉNÉGAL",
             "{{description}}": "vous offre l'actualité en temps réel ! Des analyses exclusives, Des interviews percutantes. 📲Rejoignez-nous",
             "{{imageUrl}}": "https://api-actu.yaatalmbinde.sn/actu221-file/a221-logo.jpg",
             "{{imageAlt}}": "Actu221",
