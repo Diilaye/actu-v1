@@ -35,7 +35,7 @@ app.get('/', async (req, res) => {
         // Définition des variables dynamiques
         const replacements = {
             "{{title}}": "Actu221 | L’essentiel de l'information",
-            "{{description}}": "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux...",
+            "{{description}}": "🌍 Vous voulez être au cœur de l’actualité locale et régionale ? Ne manquez rien avec Actu221 ! Découvrez des analyses exclusives, des interviews de leaders et des événements couverts en temps réel. 📲 Restez informé, partagez l’info et engagez-vous dès maintenant pour façonner l’avenir de notre communauté !",
             "{{imageUrl}}": "https://api-actu.yaatalmbinde.sn/actu221-file/a221-logo.jpg",
             "{{imageAlt}}": "Actu221",
             "{{url}}": "https://a221.net/"
