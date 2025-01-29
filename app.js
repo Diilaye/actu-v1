@@ -20,50 +20,42 @@ function getSecondParagraph(html) {
 }
 
 // URL de l'API pour récupérer l'article
-const apiUrl = 'https://api-actu.yaatalmbinde.sn/api/v1/articles/article/alioune-tine-demande-aux-autorits-dassurer-la-scurit-dahmeth-suzanne-camara';
 
 const baseApiUrl = 'https://api-actu.yaatalmbinde.sn/api/v1/articles';
 
-app.use(express.static(path.join(__dirname, "web")));
 
 
 app.get('/', async (req, res) => {
-
     try {
-
-
+        console.log("Lecture du fichier index.html");
         // Lecture du fichier index.html
         const filePath = path.join(__dirname, 'web', 'index.html');
-        
-        let html = fs.readFileSync(filePath, 'utf-8');
+        let html = await fs.promises.readFile(filePath, 'utf-8');
 
-        // Insertion directe des variables dans l'HTML
+        // Définition des variables dynamiques
+        const replacements = {
+            "{{title}}": "Actu221 | L’essentiel de l'information",
+            "{{description}}": "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux...",
+            "{{imageUrl}}": "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107...",
+            "{{imageAlt}}": "Actu221",
+            "{{url}}": "https://a221.net/"
+        };
 
-        html = await  html.replace(/{{title}}/g, "Actu221 | L’essentiel de l'information");
-        html = await html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
-        html = await  html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
-        html = await html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = await html.replace(/{{url}}/g,   "https://a221.net/");
-        
-        // Envoi de l'HTML modifié au client
+        // Remplacement des variables dans l'HTML
+        for (const [key, value] of Object.entries(replacements)) {
+           // console.log(key, value);
+            html = html.replace(new RegExp(key, "g"), value);
+        }
+
+        // Envoi de la page HTML modifiée
         res.send(html);
 
     } catch (error) {
-         // Lecture du fichier index.html
-         const filePath = path.join(__dirname, 'web', 'index.html');
-         let html = fs.readFileSync(filePath, 'utf-8');
- 
-         // Insertion directe des variables dans l'HTML
-
-        html = await  html.replace(/{{title}}/g, "Actu221 | L’essentiel de l'information");
-        html = await html.replace(/{{description}}/g,  "Actu221 est une maison de presse dynamique et moderne, spécialisée dans la couverture de l'actualité et des événements locaux et régionaux. Elle vise à offrir une information précise, équilibrée et actuelle à ses lecteurs et auditeurs, en mettant l'accent sur la pertinence des nouvelles pour la communauté qu'elle dessert");
-        html = await  html.replace(/{{imageUrl}}/g, "https://scontent.fcky2-1.fna.fbcdn.net/v/t39.30808-6/276091570_1411801672582180_92972350406487468_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dvohOpyp8rUQ7kNvgES-8T1&_nc_ht=scontent.fcky2-1.fna&oh=00_AYA1ODKTQTK-lWzyfN3yww73ouXahB-wQtqMmfnsldgobA&oe=66D2ACE0");
-        html = await html.replace(/{{imageAlt}}/g,  "Actu221");
-        html = await html.replace(/{{url}}/g,   "https://a221.net/");
-         // Envoi de l'HTML modifié au client
-         res.send(html);
+        console.error("Erreur lors du chargement de index.html :", error);
+        res.status(500).send("Erreur interne du serveur");
     }
 });
+
 
 
 app.get('/article/:slug', async (req, res) => {
