@@ -23,11 +23,11 @@ function getSecondParagraph(html) {
 
 const baseApiUrl = 'https://api-actu.yaatalmbinde.sn/api/v1/articles';
 
+app.use(express.static(path.join(__dirname, 'web')));
 
 
 app.get('/', async (req, res) => {
     try {
-        console.log("Lecture du fichier index.html");
         // Lecture du fichier index.html
         const filePath = path.join(__dirname, 'web', 'index.html');
         let html = await fs.promises.readFile(filePath, 'utf-8');

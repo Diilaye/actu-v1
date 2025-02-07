@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T1FKTGFBJK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-T1FKTGFBJK');
-</script>
-
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -29,65 +18,35 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
   <meta name="apple-mobile-web-app-title" content="ACTU221">
-  <meta name="geo.placename" content="Senegal">
-  <link rel="canonical" href="https://actu221.net/">
-  <meta http-equiv="content-language" content="fr-FR">
-  <meta name="robots" content="index, follow, noydir">
-  <meta name="referrer" content="origin-when-cross-origin">
-  <meta name="keywords" content="Actualités, Politique, economie, Sports, afrique, international, investigation, émissions">
-  <meta property="fb:app_id" content="621225443649535" />
 
-  <meta name="description" content="{{description}}">
+  <meta name="geo.placename" content="Senegal" />
+  <link rel="canonical" href="https://actu221.net/" />
+  <meta http-equiv="content-language" content="fr-FR" />
+  <meta name="robots" content="index, follow, noydir" />
+  <link rel="shortlink" href="https://actu221.net/" />
+  <meta name="referrer" content="origin-when-cross-origin" />
+  <meta name="keywords" content="Actualités, Politique, economie, Sports, afrique, international, investigation, émissions" />
 
-  <!-- Open Graph pour le partage sur les réseaux sociaux -->
+  <meta name="description" content="L’essentiel de l'information">
   <meta property="og:title" content="{{title}}">
   <meta property="og:description" content="{{description}}">
   <meta property="og:image" content="{{imageUrl}}">
-  <meta property="og:image:alt" content="{{imageAlt}}">
-  <meta property="og:url" content="{{url}}">
-  <meta property="og:type" content="website">
-  <meta property="og:image:width" content="630">
-  <meta property="og:image:height" content="630">
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{title}}">
-  <meta name="twitter:description" content="{{description}}">
-  <meta name="twitter:image" content="{{imageUrl}}">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://www.actu221.net/sites/default/files/favicon.ico">
-  <link rel="apple-touch-icon" href="https://www.actu221.net/sites/default/files/favicon.ico">
-
-  <title>{{title}}</title>
+  <title>Actu221</title>
   <link rel="manifest" href="manifest.json">
-
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "2178232310";
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
 </head>
 <body>
-  
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-  </script>
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
