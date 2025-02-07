@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1FKTGFBJK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T1FKTGFBJK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', 'G-T1FKTGFBJK');
-  </script>
+  gtag('config', 'G-T1FKTGFBJK');
+</script>
 
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
   <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+
 
   <meta name="apple-mobile-web-app-title" content="ACTU221">
   <meta name="geo.placename" content="Senegal">
@@ -49,34 +63,31 @@
   <link rel="apple-touch-icon" href="https://www.actu221.net/sites/default/files/favicon.ico">
 
   <title>{{title}}</title>
-
   <link rel="manifest" href="manifest.json">
 
   <script>
-    const serviceWorkerVersion = "3115783813";
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "2178232310";
   </script>
-
-  <!-- Chargement de Flutter -->
+  <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
-
-<script>
-  window.addEventListener('load', function() {
-    if (window._flutter && window._flutter.loader) {
-      window._flutter.loader.loadEntrypoint({
-        serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
+  
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(function(appRunner) {
             appRunner.runApp();
           });
         }
       });
-    } else {
-      console.error("Flutter loader non disponible !");
-    }
-  });
-</script>
-
+    });
+  </script>
 </body>
 </html>
