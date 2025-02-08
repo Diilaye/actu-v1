@@ -23,8 +23,6 @@ function getSecondParagraph(html) {
 
 const baseApiUrl = 'https://api-actu.yaatalmbinde.sn/api/v1/articles';
 
-
-
 app.get('/', async (req, res) => {
     try {
         // Lecture du fichier index.html
@@ -259,6 +257,8 @@ app.get('/journaliste', async (req, res) => {
 
     }
 });
+
+app.use(express.static(path.join(__dirname, 'web')));
 
 // Démarrage du serveur
 const PORT = process.env.PORT || 7200;
