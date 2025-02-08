@@ -30,7 +30,6 @@ app.get('/', async (req, res) => {
         // Lecture du fichier index.html
         const filePath = path.join(__dirname, 'web', 'index.html');
         let html = await fs.promises.readFile(filePath, 'utf-8');
-        console.log(html);
         // Définition des variables dynamiques
         const replacements = {
             "{{title}}": "Actu221 , 1er média digital du SÉNÉGAL",
