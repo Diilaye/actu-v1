@@ -258,6 +258,29 @@ app.get('/journaliste', async (req, res) => {
     }
 });
 
+app.get('/recent', async (req, res) => {
+    try {
+
+        // Lecture du fichier index.html
+        const filePath = path.join(__dirname, 'web', 'index.html');
+        let html = fs.readFileSync(filePath, 'utf-8');
+
+
+
+        res.send(html);
+
+    } catch (error) {
+        // Lecture du fichier index.html
+        const filePath = path.join(__dirname, 'web', 'index.html');
+        let html = fs.readFileSync(filePath, 'utf-8');
+
+
+
+        res.send(html);
+
+    }
+});
+
 app.use(express.static(path.join(__dirname, 'web')));
 
 // Démarrage du serveur
