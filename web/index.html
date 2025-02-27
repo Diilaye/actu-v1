@@ -1,72 +1,83 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
 
-  <!-- Google Tag Manager -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1FKTGFBJK"></script>
+  <meta property="fb:pages" content="641572929530326" />
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144157376-1"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-T1FKTGFBJK', { 'anonymize_ip': true });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-144157376-1');
   </script>
 
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
   <base href="/">
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="apple-mobile-web-app-title" content="ACTU221">
-  <meta name="geo.placename" content="Sénégal">
-  <link rel="canonical" href="https://actu221.net/">
-  <meta http-equiv="content-language" content="fr-FR">
-  <meta name="robots" content="index, follow">
-  <meta name="referrer" content="origin-when-cross-origin">
-  <meta name="keywords" content="Actualités, Politique, Économie, Sports, Afrique, International, Investigation, Émissions">
-  <meta name="description" content="{{description}}">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+ 
 
-  <!-- Open Graph pour les réseaux sociaux -->
-  <meta property="og:type" content="website">
+  <meta name="apple-mobile-web-app-title" content="ACTU221">
+
+  <meta name="geo.placename" content="Senegal" />
+  <link rel="canonical" href="https://actu221.net/" />
+  <meta http-equiv="content-language" content="fr-FR" />
+  <meta name="robots" content="index, follow, noydir" />
+  <link rel="shortlink" href="https://actu221.net/" />
+  <meta name="referrer" content="origin-when-cross-origin" />
+
+  <meta name="description" content="{{description}}">
   <meta property="og:title" content="{{title}}">
   <meta property="og:description" content="{{description}}">
-  <meta property="og:image" content="{{image}}">
-  <meta property="og:url" content="{{url}}">
-  <meta property="og:site_name" content="ACTU221">
+  <meta property="og:image" content="{{imageUrl}}">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{title}}">
-  <meta name="twitter:description" content="{{description}}">
-  <meta name="twitter:image" content="{{image}}">
+
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://www.actu221.net/sites/default/files/favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.ico"/>
 
-  <title>{{title}}</title>
+  <title>ACTU221</title>
+  <title>{{title}} </title>
+  <link rel="manifest" href="manifest.json">
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "3015785924";
+    const serviceWorkerVersion = "3202816261";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
-<script>
-  window.addEventListener('load', function(ev) {
-    // Download main.dart.js
-    _flutter.loader.loadEntrypoint({
-      serviceWorker: {
-        serviceWorkerVersion: serviceWorkerVersion,
-      },
-      onEntrypointLoaded: function(engineInitializer) {
-        let config = { renderer: 'html' };
-        engineInitializer.initializeEngine(config).then(function(appRunner) {
-          appRunner.runApp();
-        });
-      }
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
