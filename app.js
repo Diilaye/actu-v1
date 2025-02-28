@@ -2,10 +2,10 @@ const express = require('express');
 const axios = require('axios');
 const fs = require('fs');
 const cheerio = require('cheerio');
-
+const compression = require('compression');
 const path = require('path');
 const app = express();
-
+app.use(compression());
 
 function getSecondParagraph(html) {
     const $ = cheerio.load(html);
