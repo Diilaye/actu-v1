@@ -68,6 +68,7 @@ app.get('/article/:slug', async (req, res) => {
         // Récupération de l'objet article depuis l'API
         const response = await axios.get(baseApiUrl+req.path);
         const article = response.data.data;
+        console.log('Article récupéré:', article);
 
         // Lecture du fichier index.html
         const filePath = path.join(__dirname, 'web', 'index.html');
@@ -77,7 +78,7 @@ app.get('/article/:slug', async (req, res) => {
         const imageUrl = article.image && article.image.url 
             ? (article.image.url.startsWith('http') 
                 ? article.image.url 
-                : "https://api-actu.smartek.sn/" + article.image.url)
+                : "https://api-actu.smartek.sn" + article.image.url)
             : "https://api-actu.smartek.sn/actu221-file/a221-logo.jpg";
 
         // Nettoyer la description
@@ -90,7 +91,7 @@ app.get('/article/:slug', async (req, res) => {
         html = html.replace(/{{description}}/g, description);
         html = html.replace(/{{image}}/g, imageUrl);
         html = html.replace(/{{imageAlt}}/g, article.titre || 'Actu221');
-        html = html.replace(/{{url}}/g, "https://actu221.net" + req.path);
+        html = html.replace(/{{url}}/g, "https://a221.net" + req.path);
 
         // Envoi de l'HTML modifié au client
         res.send(html);
