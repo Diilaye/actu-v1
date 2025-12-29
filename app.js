@@ -16,7 +16,7 @@ function getSecondParagraph(html) {
 
 // URL de l'API pour récupérer l'article
 
-const baseApiUrl = 'https://api-actu.yaatalmbinde.sn/api/v1/articles';
+const baseApiUrl = 'https://api-actu.smartek.sn/api/v1/articles';
 
 // Lire le fichier une seule fois au démarrage
 const filePath = path.join(__dirname, 'web', 'index.html');
@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
         const replacements = {
             "{{title}}": "Actu221 , 1er média digital du SÉNÉGAL",
             "{{description}}": "vous offre l'actualité en temps réel ! Des analyses exclusives, Des interviews percutantes. 📲Rejoignez-nous",
-            "{{image}}": "https://api-actu.yaatalmbinde.sn/actu221-file/a221-logo.jpg",
+            "{{image}}": "https://api-actu.smartek.sn/actu221-file/a221-logo.jpg",
             "{{imageAlt}}": "Actu221",
             "{{url}}": "https://a221.net/"
         };
@@ -77,8 +77,8 @@ app.get('/article/:slug', async (req, res) => {
         const imageUrl = article.image && article.image.url 
             ? (article.image.url.startsWith('http') 
                 ? article.image.url 
-                : "https://api-actu.yaatalmbinde.sn" + article.image.url)
-            : "https://api-actu.yaatalmbinde.sn/actu221-file/a221-logo.jpg";
+                : "https://api-actu.smartek.sn/" + article.image.url)
+            : "https://api-actu.smartek.sn/actu221-file/a221-logo.jpg";
 
         // Nettoyer la description
         const description = getSecondParagraph(article.description) || 
