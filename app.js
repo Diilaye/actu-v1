@@ -14,6 +14,24 @@ function getSecondParagraph(html) {
     return paragraphs.length >= 2 ? $(paragraphs[1]).text().trim() : null;
 }
 
+function cleanDescription(html) {
+    if (!html) return "Actu221 - L'essentiel de l'information";
+    
+    const $ = cheerio.load(html);
+    // Extraire tout le texte en retirant les balises HTML
+    let text = $.text().trim();
+    
+    // Remplacer les espaces multiples par un seul espace
+    text = text.replace(/\s+/g, ' ');
+    
+    // Limiter à 200 caractères pour un meilleur affichage sur les réseaux sociaux
+    if (text.length > 200) {
+        text = text.substring(0, 197) + '...';
+    }
+    
+    return text || "Actu221 - L'essentiel de l'information";
+}
+
 // URL de l'API pour récupérer l'article
 
 const baseApiUrl = 'https://api-actu.smartek.sn/api/v1/articles';
@@ -81,10 +99,16 @@ app.get('/article/:slug', async (req, res) => {
                 : "https://api-actu.smartek.sn" + article.image.url)
             : "https://api-actu.smartek.sn/actu221-file/a221-logo.jpg";
 
-        // Nettoyer la description
-        const description = getSecondParagraph(article.description) || 
-                          article.description?.substring(0, 200) || 
-                          "Actu221 - L'essentiel de l'information";
+        // Nettoyer la description - priorité au 2ème paragraphe, sinon nettoyer toute la description
+        let description;
+        const secondParagraph = getSecondParagraph(article.description);
+        if (secondParagraph) {
+            description = secondParagraph.length > 200 
+                ? secondParagraph.substring(0, 197) + '...' 
+                : secondParagraph;
+        } else {
+            description = cleanDescription(article.description);
+        }
 
         // Insertion directe des variables dans l'HTML
         html = html.replace(/{{title}}/g, article.titre || 'Actu221');
