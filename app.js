@@ -73,13 +73,24 @@ app.get('/article/:slug', async (req, res) => {
         const filePath = path.join(__dirname, 'web', 'index.html');
         let html = fs.readFileSync(filePath, 'utf-8');
 
-        // Insertion directe des variables dans l'HTML
+        // Construire l'URL complète de l'image
+        const imageUrl = article.image && article.image.url 
+            ? (article.image.url.startsWith('http') 
+                ? article.image.url 
+                : "https://api-actu.yaatalmbinde.sn" + article.image.url)
+            : "https://api-actu.yaatalmbinde.sn/actu221-file/a221-logo.jpg";
 
-        html = html.replace(/{{title}}/g, article.titre || '');
-        html = html.replace(/{{description}}/g, getSecondParagraph(article.description) || '');
-        html = html.replace(/{{image}}/g, "https://api-actu.yaatalmbinde.sn"+ article.image.url || '');
-        html = html.replace(/{{imageAlt}}/g,  article.titre || '');
-        html = html.replace(/{{url}}/g,   "https://a221.net"+req.path);
+        // Nettoyer la description
+        const description = getSecondParagraph(article.description) || 
+                          article.description?.substring(0, 200) || 
+                          "Actu221 - L'essentiel de l'information";
+
+        // Insertion directe des variables dans l'HTML
+        html = html.replace(/{{title}}/g, article.titre || 'Actu221');
+        html = html.replace(/{{description}}/g, description);
+        html = html.replace(/{{image}}/g, imageUrl);
+        html = html.replace(/{{imageAlt}}/g, article.titre || 'Actu221');
+        html = html.replace(/{{url}}/g, "https://actu221.net" + req.path);
 
         // Envoi de l'HTML modifié au client
         res.send(html);
