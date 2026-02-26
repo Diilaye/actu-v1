@@ -323,8 +323,18 @@ app.get('/recent', async (req, res) => {
     }
 });
 
+// Middleware pour désactiver le cache des fichiers JS
+app.use((req, res, next) => {
+    if (req.url.endsWith('.js')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+    }
+    next();
+});
+
 app.use(express.static(path.join(__dirname, 'web'), {
-    maxAge: '30d', // Cache les fichiers statiques pendant 30 jours
+    maxAge: '30d', // Cache les fichiers statiques pendant 30 jours (sauf JS)
     immutable: true // Indique que les fichiers ne changent pas souvent
 }));
 
