@@ -34,7 +34,11 @@ function cleanDescription(html) {
 
 // URL de l'API pour récupérer l'article
 
+<<<<<<< HEAD
 const baseApiUrl = 'https://api-actu.smartek.sn/api/v1/articles';
+=======
+const baseApiUrl = 'https://api-actu221.saharux.com/api/v1/articles';
+>>>>>>> 23801ca (add news url back)
 
 // Lire le fichier une seule fois au démarrage
 const filePath = path.join(__dirname, 'web', 'index.html');
@@ -54,7 +58,11 @@ app.get('/', async (req, res) => {
         const replacements = {
             "{{title}}": "Actu221 , 1er média digital du SÉNÉGAL",
             "{{description}}": "vous offre l'actualité en temps réel ! Des analyses exclusives, Des interviews percutantes. 📲Rejoignez-nous",
+<<<<<<< HEAD
             "{{image}}": "https://api-actu.smartek.sn/actu221-file/a221-logo.jpg",
+=======
+            "{{image}}": "https://api-actu221.saharux.com/actu221-file/a221-logo.jpg",
+>>>>>>> 23801ca (add news url back)
             "{{imageAlt}}": "Actu221",
             "{{url}}": "https://a221.net/"
         };
@@ -96,8 +104,13 @@ app.get('/article/:slug', async (req, res) => {
         const imageUrl = article.image && article.image.url 
             ? (article.image.url.startsWith('http') 
                 ? article.image.url 
+<<<<<<< HEAD
                 : "https://api-actu.smartek.sn" + article.image.url)
             : "https://api-actu.smartek.sn/actu221-file/a221-logo.jpg";
+=======
+                : "https://api-actu221.saharux.com" + article.image.url)
+            : "https://api-actu221.saharux.com/actu221-file/a221-logo.jpg";
+>>>>>>> 23801ca (add news url back)
 
         // Nettoyer la description - priorité au 2ème paragraphe, sinon nettoyer toute la description
         let description;
